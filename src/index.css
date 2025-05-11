@@ -1,0 +1,44 @@
+/* GET STARTED BUTTON FIXES */
+/* This ensures both .hero-button and .get-started-button work */
+.hero-button, .get-started-button {
+  display: inline-block; /* Changed from inline-flex to ensure compatibility */
+  padding: 16px 36px; /* Reverted to your original padding */
+  background: var(--accent-color); /* Solid color instead of gradient */
+  color: white !important; /* Force white text */
+  font-weight: 600;
+  border-radius: 6px; /* Your original radius */
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  line-height: normal; /* Reset line height */
+}
+
+/* Remove the gradient animation if it's causing issues */
+.hero-button::before, .get-started-button::before {
+  content: none !important;
+}
+
+.hero-button:hover, .get-started-button:hover {
+  background: #d91670 !important; /* Darker shade of accent color */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  text-decoration: none !important;
+}
+
+/* FORCE BUTTON VISIBILITY AND CLICKABILITY */
+a.hero-button, a.get-started-button {
+  position: relative;
+  z-index: 10;
+}
+
+/* SAFETY OVERRIDES */
+a.hero-button:hover, a.get-started-button:hover,
+a.hero-button:focus, a.get-started-button:focus,
+a.hero-button:active, a.get-started-button:active {
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
