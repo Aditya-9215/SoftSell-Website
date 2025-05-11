@@ -1,44 +1,180 @@
-/* GET STARTED BUTTON FIXES */
-/* This ensures both .hero-button and .get-started-button work */
-.hero-button, .get-started-button {
-  display: inline-block; /* Changed from inline-flex to ensure compatibility */
-  padding: 16px 36px; /* Reverted to your original padding */
-  background: var(--accent-color); /* Solid color instead of gradient */
-  color: white !important; /* Force white text */
-  font-weight: 600;
-  border-radius: 6px; /* Your original radius */
-  text-decoration: none !important;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  border: none;
-  cursor: pointer;
+/* Modern & Aesthetic Tailwind Custom Styles */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
+
+:root {
+  --primary-color: #007bff; /* Classic Blue */
+  --secondary-color: #6c757d; /* Gray */
+  --accent-color: #28a745; /* Success Green */
+  --text-primary: #343a40; /* Dark Gray */
+  --text-secondary: #6c757d; /* Light Gray */
+  --bg-light: #f8f9fa; /* Very Light Gray */
+  --bg-accent: #e9ecef; /* Lighter Gray */
+  --border-color: #dee2e6; /* Light Border */
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-primary);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh; /* Ensure body takes at least the full viewport height */
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+/* Hero Section - Full Height, Refined Gradient */
+.hero-section {
+  background-image: linear-gradient(135deg, var(--primary-color) 0%, #8ab4f8 100%); /* Softer blue gradient */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  line-height: normal; /* Reset line height */
+  padding: 60px 30px;
+  color: white;
 }
 
-/* Remove the gradient animation if it's causing issues */
-.hero-button::before, .get-started-button::before {
-  content: none !important;
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -0.06em;
 }
 
-.hero-button:hover, .get-started-button:hover {
-  background: #d91670 !important; /* Darker shade of accent color */
+.hero-subtitle {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 30px;
+  font-weight: 400;
+}
+
+.hero-button {
+  display: inline-block;
+  padding: 16px 36px;
+  background-color: var(--accent-color);
+  color: white;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.hero-button:hover {
+  background-color: #218838; /* Darker shade */
   transform: translateY(-3px);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  text-decoration: none !important;
 }
 
-/* FORCE BUTTON VISIBILITY AND CLICKABILITY */
-a.hero-button, a.get-started-button {
+/* Elegant Section Styling - Clean with Subtle Accents */
+section {
   position: relative;
-  z-index: 10;
+  padding: 80px 40px;
+  margin: 70px auto;
+  width: 90%;
+  max-width: 1200px;
+  background-color: white; /* Solid white background for ALL sections */
+  border-radius: 15px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+  transform: translateY(30px);
 }
 
-/* SAFETY OVERRIDES */
-a.hero-button:hover, a.get-started-button:hover,
-a.hero-button:focus, a.get-started-button:focus,
-a.hero-button:active, a.get-started-button:active {
-  outline: none;
-  border: none;
+/* Subtle Border Gradient Accent */
+section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+  border-radius: 15px 0 0 15px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 28px;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 35px;
+  line-height: 1.8;
+}
+
+/* Scroll Animations - Smoother Entry */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply Animation */
+.animate {
+  animation: fadeInUp 0.9s cubic-bezier(0.215, 0.61, 0.355, 1) forwards; /* More natural easing */
+}
+
+/* Footer Styling - Modern and Clean */
+footer {
+  background-color: var(--bg-accent);
+  padding: 40px 0;
+  text-align: center;
+  color: var(--text-secondary);
+  position: relative;
+  width: 100%;
+  margin-top: 80px;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-text {
+  font-size: 0.95rem;
+}
+
+.footer-link {
+  color: var(--primary-color);
   text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.footer-link:hover {
+  color: var(--primary-color); /* Keep the primary color on hover, maybe slightly darker */
+  opacity: 0.8;
+}
+
+/* Back to Top Button - Centered at the End of Content */
+.back-to-top {
+  display: block;
+  padding: 14px 30px;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  text-decoration: none;
+  margin: 30px auto; /* Centers the button horizontally */
+}
+
+.back-to-top:hover {
+  background-color: #0056b3; /* Darker shade */
+  transform: translateY(-2px);
+  box-shadow: 0 7px 12px rgba(0, 0, 0, 0.2);
 }
